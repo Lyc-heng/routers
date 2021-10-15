@@ -51,13 +51,13 @@ ssid=1&timeZone=aaaa::aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 As shown in the following figure, because the passed-in `timeZone` parameter is not checked, the 142-line `sscanf` assigns the maliciously injected super-long data to the `v9` variable, which causes the buffer overflow in the later operation of the program, and finally causes the effect of denial of service
 
-![](imgs\stack1\code.png)
+![](imgs/stack1/code.png)
 
 ### 5.2 dynamic analysis
 
 Use IDA for dynamic debugging, which is the original assembly code corresponding to the program. Before the execution of `sscanf`, the value at `[R11,#var_2C]` is still normal
 
-![](imgs\stakc1\debug.PNG)
+![](imgs/stakc1/debug.PNG)
 
 When `sscanf` is executed, the value at `[R11,#var_2C]` becomes a maliciously injected value (ASCII code value of A)
 
@@ -69,13 +69,13 @@ Looking back at the disassembly code given by IDA, the PoC given above makes the
 
 The reason for the crash is that `[R11,#var_2C]` is directly assigned to R3 register at address `0x00067360`, and the subsequent LDRB instruction causes the program to crash
 
-![](imgs\stack1\debug2.PNG)
+![](imgs/stack1/debug2.PNG)
 
 Dynamic debugging crash site
 
-![](imgs\stack1\debug3.PNG)
+![](imgs/stack1/debug3.PNG)
 
-![](imgs\stack1\debug4.PNG)
+![](imgs/stack1/debug4.PNG)
 
 ## 6、CNVD reference 
 
