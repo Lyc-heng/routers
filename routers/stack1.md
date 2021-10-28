@@ -1,4 +1,4 @@
-# Tenda AC9 0day Vulnerability report
+# CVE-2020-22079
 
 ## 1、Basci information
 

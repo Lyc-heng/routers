@@ -1,4 +1,4 @@
-# Tenda AC9 0day Vulnerability report
+# CVE-2021-31627
 
 ## 1、Basci information
 
